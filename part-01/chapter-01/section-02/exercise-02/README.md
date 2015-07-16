@@ -13,4 +13,4 @@ $$
 \end{align*}
 $$
 
-which holds for $\forall{n} \in \{2, 3, ..., 43\}$.
+which holds $\forall{n} \in \{2, 3, ..., 43\}$.
