@@ -1,0 +1,79 @@
+digraph
+{
+    node [shape = box, style = filled, fillcolor = white];
+
+    subgraph cluster_0
+    {
+        f0 [label = 58];
+        e0 [label = 41];
+        d0 [label = 26];
+        c0 [label = 59];
+        b0 [label = 41, fillcolor = black, fontcolor = white];
+        a0 [label = 31, fillcolor = gray];
+
+        { rank = same; a0, b0, c0, d0, e0, f0 }
+
+        b0 -> b0;
+    }
+
+    subgraph cluster_1
+    {
+        f1 [label = 58];
+        e1 [label = 41];
+        d1 [label = 26];
+        c1 [label = 59, fillcolor = black, fontcolor = white];
+        b1 [label = 41, fillcolor = gray];
+        a1 [label = 31];
+
+        { rank = same; a1, b1, c1, d1, e1, f1 }
+
+        c1 -> c1;
+    }
+
+    subgraph cluster_2
+    {
+        f2 [label = 58, shape = box];
+        e2 [label = 41, shape = box];
+        d2 [label = 26, shape = box, style = filled, fillcolor = black, fontcolor = white];
+        c2 [label = 59, shape = box, style = filled, fillcolor = gray];
+        b2 [label = 41, shape = box, style = filled, fillcolor = gray];
+        a2 [label = 31, shape = box, style = filled, fillcolor = gray];
+
+        { rank = same; a2, b2, c2, d2, e2, f2 }
+
+        a2 -> b2 -> c2 -> d2 [color = gray];
+        d2 -> a2;
+    }
+
+    subgraph cluster_3
+    {
+        f3 [label = 58, shape = box];
+        e3 [label = 41, shape = box, style = filled, fillcolor = black, fontcolor = white];
+        d3 [label = 59, shape = box, style = filled, fillcolor = gray];
+        c3 [label = 41, shape = box, style = filled, fillcolor = gray];
+        b3 [label = 31, shape = box];
+        a3 [label = 26, shape = box];
+
+        { rank = same; a3, b3, c3, d3, e3, f3 }
+
+        d3 -> e3 [color = gray];
+        e3 -> d3;
+    }
+
+    subgraph cluster_4
+    {
+        f4 [label = 58, shape = box, style = filled, fillcolor = black, fontcolor = white];
+        e4 [label = 59, shape = box, style = filled, fillcolor = gray];
+        d4 [label = 41, shape = box, style = filled, fillcolor = gray];
+        c4 [label = 41, shape = box];
+        b4 [label = 31, shape = box];
+        a4 [label = 26, shape = box];
+
+        { rank = same; a4, b4, c4, d4, e4, f4 }
+
+        e4 -> f4 [color = gray];
+        f4 -> e4;
+    }
+
+    a0 -> a1 -> a2 -> a3 -> a4 [style = invis];
+}
