@@ -10,26 +10,27 @@
 > correct. Make sure that your loop invariant fulfills the three necessary
 > properties.
 
-### Pseudocode
+## Pseudocode
 
 ```python
-for i = 1 to A.length
-    if A[i] == v
-        return i
-return NIL
+Linear-Search(A, v)
+  for i = 1 to A.length
+      if A[i] == v
+          return i
+  return NIL
 ```
 
-### Loop invariant
+## Loop invariant
 
-> At the start of each iteration of the for loop, $\nu$ does not appear in
+> At the start of each iteration of the **for** loop, $\nu$ does not appear in
 > $A[1..i - 1]$.
 
-#### Initialization
+### Initialization
 
 For $i = 1$ the array $A[1..0]$ is the empty array and trivially $\nu$ is not
 in it.
 
-#### Maintenance
+### Maintenance
 
 Let $i = k$, i.e., we are about to enter the $k$th iteration, and the loop
 invariant holds, i.e., $\nu$ is not in $A[1..k - 1]$. If we get to the next
@@ -37,7 +38,7 @@ iteration, then $A[k] \ne \nu$, because otherwise we would return in the body
 of the **if** statement. Then for $i = k + 1$ we have that $A[k] \ne \nu$ and $A[j] \ne \nu, \forall j = 1,...,k - 1$. Therefore,
 $A[j] \ne \nu, \forall j = 1,...,k$, i.e., the invariant holds for $i = k + 1$.
 
-#### Termination
+### Termination
 
 The loop could terminate becase of the return in the **if** statement. If this
 is the case, then $\exists i: A[i] = \nu$ and the algorithm would return $i$,
