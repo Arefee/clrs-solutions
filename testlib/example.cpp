@@ -26,7 +26,10 @@ TEST(five_is_odd)
 
 TEST(different_strings)
 {
-    ASSERT_EQUAL("macros", "macros");
+    string a = "c";
+    string b = "c++";
+
+    ASSERT_EQUAL(a, b);
 }
 
 TEST(different_vectors)

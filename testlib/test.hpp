@@ -25,7 +25,7 @@ namespace TestLib
     using namespace chrono;
 
     /*
-     * State variables
+     * State variables.
      */
 
     string current_test;
@@ -39,7 +39,7 @@ namespace TestLib
     steady_clock::time_point end;
 
     /*
-     * Helper functions
+     * Helper functions.
      */
 
     void set_time(steady_clock::time_point& point)
@@ -95,11 +95,75 @@ namespace TestLib
         }
     }
 
+    /*
+     * Definitions of how to print different objects.
+     */
+
     template <typename T>
     string to_string(const T& item)
     {
         ostringstream out;
         out << item;
+
+        return out.str();
+    }
+
+    string to_string(const string& sequence)
+    {
+        ostringstream out;
+        out << "'" << sequence << "'";
+
+        return out.str();
+    }
+
+    string to_string(const char* sequence)
+    {
+        ostringstream out;
+        out << "'" << sequence << "'";
+
+        return out.str();
+    }
+
+    template <typename T>
+    string to_string(const vector<T>& items)
+    {
+        ostringstream out;
+
+        out << '[';
+
+        for (auto i = items.cbegin(); i != items.cend(); ++i)
+        {
+            out << to_string(*i);
+
+            if (i + 1 != items.cend())
+            {
+                out << ", ";
+            }
+        }
+
+        out << ']';
+
+        return out.str();
+    }
+
+    template <typename K, typename V>
+    string to_string(const map<K, V>& items)
+    {
+        ostringstream out;
+
+        out << '{';
+
+        for (auto i = items.cbegin(); i != items.cend(); )
+        {
+            out << to_string(i->first) << ": " << to_string(i->second);
+
+            if (++i != items.cend())
+            {
+                out << ", ";
+            }
+        }
+
+        out << '}';
 
         return out.str();
     }
@@ -192,50 +256,5 @@ namespace TestLib
         }                                                                    \
                                                                              \
     } while (0)
-
-/*
- * Definitions of the `<<` operator for several containers. Those are used when
- * an assertion consisting of such objects fails and they have to be displayed.
- */
-
-template <typename T>
-ostream& operator<<(ostream& out, const vector<T>& items)
-{
-    out << '[';
-
-    for (auto i = items.cbegin(); i != items.cend(); ++i)
-    {
-        out << *i;
-
-        if (i + 1 != items.cend())
-        {
-            out << ", ";
-        }
-    }
-
-    out << ']';
-
-    return out;
-}
-
-template <typename K, typename V>
-ostream& operator<<(ostream& out, const map<K, V>& items)
-{
-    out << '{';
-
-    for (auto i = items.cbegin(); i != items.cend(); )
-    {
-        out << i->first << ": " << i->second;
-
-        if (++i != items.cend())
-        {
-            out << ", ";
-        }
-    }
-
-    out << '}';
-
-    return out;
-}
 
 #endif
