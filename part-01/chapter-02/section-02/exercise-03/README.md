@@ -6,11 +6,11 @@
 
 ## Best-case
 
-The best-case is when the element we are looking for is the first in the array.
-This means that the only "steps" that have to be performed are: initializing
-the loop variable, checking the loop condition, checking the **if** condition
-and returning, i.e., a constant number of "steps". This means that the
-best-case running time is $\Theta(1)$.
+The best-case occurs when the element we are looking for is the first in the
+array. This means that the only "steps" that have to be performed are:
+initializing the loop variable, checking the loop condition, checking the
+**if** condition and returning, i.e., a constant number of "steps". This means
+that the best-case running time is $\Theta(1)$.
 
 ## Average-case
 
