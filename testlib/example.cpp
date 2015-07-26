@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "test.hpp"
+#include "testlib.hpp"
 
 TEST(one_plus_one_is_two)
 {
