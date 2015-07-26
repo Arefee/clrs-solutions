@@ -2,7 +2,7 @@
 > strengths and limitations.
 
 *Array* is a collection of fixed number of elements, each identified by an
-index - number from $0$ to $n - 1$ where $n$ is the number of elements in the
+index - number from $0$ to $n - 1$, where $n$ is the number of elements in the
 array.
 
 Strengths:
