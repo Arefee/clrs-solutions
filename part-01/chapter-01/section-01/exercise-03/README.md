@@ -13,4 +13,5 @@ Strengths:
 
 Limitations:
 
+* needs sequential space in memory
 * cannot insert/delete elements
