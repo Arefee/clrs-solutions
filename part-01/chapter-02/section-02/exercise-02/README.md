@@ -43,8 +43,8 @@ $A.length - 1$ iterations.
 
 ## Running times
 
-The best-case running time is $\Theta(n^2)$ and it occurs when the input array
-is sorted.
+The best-case running time is $\Theta(n^{2})$ and it occurs when the input
+array is sorted.
 
-The worst-case running time is $\Theta(n^2)$ and it occurs when the input array
-is reverse sorted.
+The worst-case running time is $\Theta(n^{2})$ and it occurs when the input
+array is reverse sorted.
