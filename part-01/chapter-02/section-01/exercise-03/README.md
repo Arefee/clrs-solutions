@@ -41,8 +41,8 @@ $A[j] \ne \nu, \forall j = 1,...,k$, i.e., the invariant holds for $i = k + 1$.
 ### Termination
 
 The loop could terminate becase of the return in the **if** statement. If this
-is the case, then $\exists i: A[i] = \nu$ and the algorithm would return $i$,
-i.e., it is correct.
+is the case, then $\exists i: A[i] = \nu$ and the algorithm would return that
+$i$, i.e., it is correct.
 
 Another way for the loop to terminate is when $i = A.length + 1$. Then by the
 loop invariant, we have that $A[j] \ne \nu, \forall j = 1,...,A.length$. In
