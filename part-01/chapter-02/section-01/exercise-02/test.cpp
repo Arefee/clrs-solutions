@@ -35,7 +35,7 @@ TEST(nondecreasingly_sorted)
     ASSERT_EQUAL(actual, expected);
 }
 
-TEST(nonicreasingly_sorted)
+TEST(nonincreasingly_sorted)
 {
     vector<int> actual   {101, 41, 16, 10, 5, 2, 1};
     vector<int> expected {101, 41, 16, 10, 5, 2, 1};
@@ -72,7 +72,7 @@ int main()
     RUN_TEST(empty_sequence);
     RUN_TEST(single_element_sequence);
     RUN_TEST(nondecreasingly_sorted);
-    RUN_TEST(nonicreasingly_sorted);
+    RUN_TEST(nonincreasingly_sorted);
     RUN_TEST(figure_2_2_example);
     RUN_TEST(exercise_2_1_1_example);
 
