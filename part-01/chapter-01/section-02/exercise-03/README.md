@@ -10,10 +10,10 @@ $$
 
 is $0$.
 
-The smallest value $n_0$ of $n$ such that
+The smallest value $n_0$ such that
 
 $$
-    \forall n \geq n_0: 100n^{2} < 2^{n}
+    \forall n \geq n_0 \quad 100n^{2} < 2^{n}
 $$
 
 is $15$.
