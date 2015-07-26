@@ -17,7 +17,7 @@ and $B'$.
 Add-Binary(A, B)
   let C[1 .. A.length + 1] be a new array
   carry = 0
-  for i = C.length down to 2
+  for i = C.length downto 2
       C[i]  = (A[i - 1] + B[i - 1] + carry) % 2
       carry = (A[i - 1] + B[i - 1] + carry) / 2
   C[i] = carry
