@@ -37,14 +37,14 @@ Selection-Sort(A)
 When the first **for** loop terminates $i = A.length$.
 According to the invariant the subarray $A[1..A.length - 1]$ is sorted and
 consists of the smallest $A.length - 1$ elements of $A$. Therefore,
-$A[A.length]$ is the biggest element and it is in the correct position, i.e.,
+$A[A.length]$ is the largest element and it is in the correct position, i.e.,
 the array $A$ is sorted. This is why it suffices for the loop to do only
 $A.length - 1$ iterations.
 
 ## Running times
 
 The best-case running time is $\Theta(n^{2})$ and it occurs when the input
-array is sorted.
+array is sorted (then the body of the **if** is never executed).
 
 The worst-case running time is $\Theta(n^{2})$ and it occurs when the input
-array is reverse sorted.
+array is reverse sorted (then the body of the **if** is always executed).
