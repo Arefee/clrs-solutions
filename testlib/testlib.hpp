@@ -1,5 +1,5 @@
-#ifndef TESTING_LIBRARY
-#define TESTING_LIBRARY
+#ifndef TESTLIB_HPP
+#define TESTLIB_HPP
 
 #include <chrono>
 #include <cmath>
