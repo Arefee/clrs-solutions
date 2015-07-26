@@ -4,6 +4,8 @@
 
 #include "testlib.hpp"
 
+using namespace std;
+
 TEST(one_plus_one_is_two)
 {
     ASSERT_EQUAL(1 + 1, 2);
@@ -26,26 +28,23 @@ TEST(five_is_odd)
 
 TEST(different_strings)
 {
-    string a = "c";
-    string b = "c++";
-
-    ASSERT_EQUAL(a, b);
+    ASSERT_EQUAL("c", "c++");
 }
 
 TEST(different_vectors)
 {
-    vector<int> left  {5, 7, 9};
-    vector<int> right {1, 4, 8};
+    vector<int> actual   {5, 7, 9};
+    vector<int> expected {1, 4, 8};
 
-    ASSERT_EQUAL(left, right);
+    ASSERT_EQUAL(actual, expected);
 }
 
 TEST(different_maps)
 {
-    map<string, string> left  {{"bulgaria", "sofia"}, {"canada", "ottawa"}};
-    map<string, string> right {{"ala", "bala"},       {"porto", "kala"}};
+    map<string, string> actual   {{"bulgaria", "sofia"}, {"canada", "ottawa"}};
+    map<string, string> expected {{"ala", "bala"},       {"porto", "kala"}};
 
-    ASSERT_EQUAL(left, right);
+    ASSERT_EQUAL(actual, expected);
 }
 
 int main(void)

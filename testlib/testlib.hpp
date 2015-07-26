@@ -12,7 +12,95 @@
 #include <string>
 #include <vector>
 
-using namespace std;
+/*
+ * Essentially this is the library API
+ */
+
+#define TEST(name)                                                           \
+    void _##name##_test_code()
+
+#define RUN_TEST(name)                                                       \
+    do                                                                       \
+    {                                                                        \
+        TestLib::run_test(#name, _##name##_test_code);                       \
+                                                                             \
+    } while (0)
+
+#define BEGIN()                                                              \
+    do                                                                       \
+    {                                                                        \
+        TestLib::set_time(TestLib::begin);                                   \
+                                                                             \
+    } while (0)
+
+#define END()                                                                \
+    do                                                                       \
+    {                                                                        \
+        TestLib::set_time(TestLib::end);                                     \
+        return TestLib::report_results();                                    \
+                                                                             \
+    } while (0)
+
+#define ASSERT_TRUE(COND)                                                    \
+    do                                                                       \
+    {                                                                        \
+        TestLib::current_file = __FILE__;                                    \
+        TestLib::current_line = __LINE__;                                    \
+                                                                             \
+        if (!(COND))                                                         \
+        {                                                                    \
+            throw std::logic_error {TestLib::to_string((COND)) +             \
+                                    " is not true"};                         \
+        }                                                                    \
+                                                                             \
+    } while (0)
+
+#define ASSERT_FALSE(COND)                                                   \
+    do                                                                       \
+    {                                                                        \
+        TestLib::current_file = __FILE__;                                    \
+        TestLib::current_line = __LINE__;                                    \
+                                                                             \
+        if ((COND))                                                          \
+        {                                                                    \
+            throw std::logic_error {TestLib::to_string((COND)) +             \
+                                    " is not false"};                        \
+        }                                                                    \
+                                                                             \
+    } while (0)
+
+#define ASSERT_EQUAL(GOT, EXP)                                               \
+    do                                                                       \
+    {                                                                        \
+        TestLib::current_file = __FILE__;                                    \
+        TestLib::current_line = __LINE__;                                    \
+                                                                             \
+        if ((GOT) != (EXP))                                                  \
+        {                                                                    \
+            throw std::logic_error {TestLib::to_string((GOT)) +              \
+                                    " != " +                                 \
+                                    TestLib::to_string((EXP))};              \
+        }                                                                    \
+                                                                             \
+    } while (0)
+
+#define ASSERT_ALMOST_EQUAL(GOT, EXP, PLACES)                                \
+    do                                                                       \
+    {                                                                        \
+        TestLib::current_file = __FILE__;                                    \
+        TestLib::current_line = __LINE__;                                    \
+                                                                             \
+        if (fabs((EXP) - (GOT)) >= 1e-##PLACES)                              \
+        {                                                                    \
+            throw std::logic_error {TestLib::to_string((GOT)) +              \
+                                    " != " +                                 \
+                                    TestLib::to_string((EXP)) +              \
+                                    " within " +                             \
+                                    TestLib::to_string((PLACES)) +           \
+                                    " places"};                              \
+        }                                                                    \
+                                                                             \
+    } while (0)
 
 /*
  * This namespace consists of the state of the library that is used during
@@ -22,6 +110,7 @@ using namespace std;
 
 namespace TestLib
 {
+    using namespace std;
     using namespace chrono;
 
     /*
@@ -168,93 +257,5 @@ namespace TestLib
         return out.str();
     }
 }
-
-/*
- * Essentially this is the library API
- */
-
-#define TEST(name)                                                           \
-    void _##name##_test_code()
-
-#define RUN_TEST(name)                                                       \
-    do                                                                       \
-    {                                                                        \
-        TestLib::run_test(#name, _##name##_test_code);                       \
-                                                                             \
-    } while (0)
-
-#define BEGIN()                                                              \
-    do                                                                       \
-    {                                                                        \
-        TestLib::set_time(TestLib::begin);                                   \
-                                                                             \
-    } while (0)
-
-#define END()                                                                \
-    do                                                                       \
-    {                                                                        \
-        TestLib::set_time(TestLib::end);                                     \
-        return TestLib::report_results();                                    \
-                                                                             \
-    } while (0)
-
-#define ASSERT_TRUE(COND)                                                    \
-    do                                                                       \
-    {                                                                        \
-        TestLib::current_file = __FILE__;                                    \
-        TestLib::current_line = __LINE__;                                    \
-                                                                             \
-        if (!(COND))                                                         \
-        {                                                                    \
-            throw logic_error {TestLib::to_string((COND)) + " is not true"}; \
-        }                                                                    \
-                                                                             \
-    } while (0)
-
-#define ASSERT_FALSE(COND)                                                   \
-    do                                                                       \
-    {                                                                        \
-        TestLib::current_file = __FILE__;                                    \
-        TestLib::current_line = __LINE__;                                    \
-                                                                             \
-        if ((COND))                                                          \
-        {                                                                    \
-            throw logic_error {TestLib::to_string((COND)) + " is not false"};\
-        }                                                                    \
-                                                                             \
-    } while (0)
-
-#define ASSERT_EQUAL(GOT, EXP)                                               \
-    do                                                                       \
-    {                                                                        \
-        TestLib::current_file = __FILE__;                                    \
-        TestLib::current_line = __LINE__;                                    \
-                                                                             \
-        if ((GOT) != (EXP))                                                  \
-        {                                                                    \
-            throw logic_error {TestLib::to_string((GOT)) +                   \
-                               " != " +                                      \
-                               TestLib::to_string((EXP))};                   \
-        }                                                                    \
-                                                                             \
-    } while (0)
-
-#define ASSERT_ALMOST_EQUAL(GOT, EXP, PLACES)                                \
-    do                                                                       \
-    {                                                                        \
-        TestLib::current_file = __FILE__;                                    \
-        TestLib::current_line = __LINE__;                                    \
-                                                                             \
-        if (fabs((EXP) - (GOT)) >= 1e-##PLACES)                              \
-        {                                                                    \
-            throw logic_error {TestLib::to_string((GOT)) +                   \
-                               " != " +                                      \
-                               TestLib::to_string((EXP)) +                   \
-                               " within " +                                  \
-                               TestLib::to_string((PLACES)) +                \
-                               " places"};                                   \
-        }                                                                    \
-                                                                             \
-    } while (0)
 
 #endif
