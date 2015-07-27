@@ -12,7 +12,7 @@
 
 ## Pseudocode
 
-```python
+```
 Linear-Search(A, v)
   for i = 1 to A.length
       if A[i] == v

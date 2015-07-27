@@ -13,7 +13,7 @@ and $B'$.
 
 ## Pseudocode
 
-```python
+```
 Add-Binary(A, B)
   let C[1 .. A.length + 1] be a new array
   carry = 0

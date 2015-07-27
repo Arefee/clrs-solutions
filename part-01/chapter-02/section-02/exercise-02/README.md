@@ -10,7 +10,7 @@
 
 ## Pseudocode
 
-```python
+```
 Selection-Sort(A)
   for i = 1 to A.length - 1
       min = i
