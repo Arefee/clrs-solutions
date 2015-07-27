@@ -1,22 +1,23 @@
 #include <utility>
 
-using namespace std;
-
-template <typename InputIterator>
-void selection_sort(InputIterator first, InputIterator last)
+namespace clrs
 {
-    for (auto i = first; i + 1 < last; ++i)
+    template <typename InputIterator>
+    void selection_sort(InputIterator first, InputIterator last)
     {
-        auto min = i;
-
-        for (auto j = i + 1; j < last; ++j)
+        for (auto i = first; i + 1 < last; ++i)
         {
-            if (*j < *min)
-            {
-                min = j;
-            }
-        }
+            auto min = i;
 
-        swap(*i, *min);
+            for (auto j = i + 1; j < last; ++j)
+            {
+                if (*j < *min)
+                {
+                    min = j;
+                }
+            }
+
+            std::swap(*i, *min);
+        }
     }
 }

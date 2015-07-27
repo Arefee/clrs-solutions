@@ -1,34 +1,35 @@
 #include <algorithm>
 
-using namespace std;
-
-template <typename LeftInputIterator,
-          typename RightInputIterator,
-          typename OutputIterator>
-OutputIterator mmerge(LeftInputIterator  left_first,
-                      LeftInputIterator  left_last,
-                      RightInputIterator right_first,
-                      RightInputIterator right_last,
-                      OutputIterator     result)
+namespace clrs
 {
-    while (left_first != left_last && right_first != right_last)
+    template <typename LeftInputIterator,
+              typename RightInputIterator,
+              typename OutputIterator>
+    OutputIterator merge(LeftInputIterator  left_first,
+                         LeftInputIterator  left_last,
+                         RightInputIterator right_first,
+                         RightInputIterator right_last,
+                         OutputIterator     result)
     {
-        if (*left_first < *right_first)
+        while (left_first != left_last && right_first != right_last)
         {
-            *result = *left_first;
-            ++left_first;
-        }
-        else
-        {
-            *result = *right_first;
-            ++right_first;
+            if (*left_first < *right_first)
+            {
+                *result = *left_first;
+                ++left_first;
+            }
+            else
+            {
+                *result = *right_first;
+                ++right_first;
+            }
+
+            ++result;
         }
 
-        ++result;
+        result = copy(left_first,  left_last, result);
+        result = copy(right_first, right_last, result);
+
+        return result;
     }
-
-    result = copy(left_first,  left_last, result);
-    result = copy(right_first, right_last, result);
-
-    return result;
 }
