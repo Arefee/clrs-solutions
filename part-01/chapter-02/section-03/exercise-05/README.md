@@ -1,5 +1,5 @@
-> Referring back to the searching problem (see [Exercise 2.1-3]), observe that
-> if the sequence $A$ is sorted, we can check the midpoint of the sequence
+> Referring back to the searching problem (see [Exercise 2.1-3][]), observe
+> that if the sequence $A$ is sorted, we can check the midpoint of the sequence
 > against $\nu$ and eliminate half of the sequence from further consideration.
 > The ***binary search*** algorithm repeats this procedure, halving the size
 > of the remaining portion of the sequence each time. Write pseudocode, either
@@ -33,4 +33,4 @@ will equal the number of times we have to divide $n$ by $2$ till it goes to
 $0$, which is $\lfloor \lg{n} \rfloor + 1$. Therefore, the worst-case running
 time of ***binary search*** is $\Theta(\lg{n})$.
 
-[Exercise 2.1-3]: ../../section-01/exercise-03/README.md
+[Exercise 2.1-3]: /part-01/chapter-02/section-01/exercise-03/README.md
