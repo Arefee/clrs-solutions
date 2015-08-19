@@ -2,8 +2,8 @@
 
 namespace clrs
 {
-    template <typename InputIterator>
-    void selection_sort(InputIterator first, InputIterator last)
+    template <typename RandomAccessIterator>
+    void selection_sort(RandomAccessIterator first, RandomAccessIterator last)
     {
         for (auto i = first; i + 1 < last; ++i)
         {
