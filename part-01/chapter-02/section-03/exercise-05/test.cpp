@@ -55,8 +55,10 @@ TEST(missing_element)
 
     ASSERT_TRUE(clrs::binary_search(sequence.cbegin(), sequence.cend(), 0) ==
                 sequence.cend());
+
     ASSERT_TRUE(clrs::binary_search(sequence.cbegin(), sequence.cend(), 6) ==
                 sequence.cend());
+
     ASSERT_TRUE(clrs::binary_search(sequence.cbegin(), sequence.cend(), 111) ==
                 sequence.cend());
 }
