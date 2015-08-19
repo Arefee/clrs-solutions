@@ -49,6 +49,20 @@ TEST(find_inner_element)
                 sequence.cbegin() + 5);
 }
 
+TEST(missing_element)
+{
+    std::vector<int> sequence {1, 5, 7, 9, 42, 101};
+
+    ASSERT_TRUE(clrs::linear_search(sequence.cbegin(), sequence.cend(), 0) ==
+                sequence.cend());
+
+    ASSERT_TRUE(clrs::linear_search(sequence.cbegin(), sequence.cend(), 6) ==
+                sequence.cend());
+
+    ASSERT_TRUE(clrs::linear_search(sequence.cbegin(), sequence.cend(), 111) ==
+                sequence.cend());
+}
+
 int main()
 {
     BEGIN();
@@ -58,6 +72,7 @@ int main()
     RUN_TEST(find_first_element);
     RUN_TEST(find_last_element);
     RUN_TEST(find_inner_element);
+    RUN_TEST(missing_element);
 
     END();
 }
