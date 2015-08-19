@@ -7,10 +7,11 @@
 Assume that $S$ is an array of $n$ elements (otherwise, we could iterate over it an store its elements in an array in linear time). First we sort $S$ in
 $\Theta(n\lg{n})$ time. Then we iterate over its $n$ elements and for each of
 them look for $x - S[i]$ in $S$ (where $S[i]$ is the current element) using
-binary search. If any of the lookups succeeds, return true, otherwise, false.
-This leads to a $\Theta(n\lg{n})$ running time, since we sort in
-$\Theta(n\lg{n})$ and the **for** loop makes $n$ iterations, each of them
-taking $\Theta(\lg{n})$, i.e., $\Theta(n\lg{n})$.
+binary search. If any of the lookups succeeds and does not match with the
+current element, return true, otherwise, false. This leads to a
+$\Theta(n\lg{n})$ running time, since we sort in $\Theta(n\lg{n})$ and the
+**for** loop makes $n$ iterations, each of them taking $\Theta(\lg{n})$, i.e.,
+$\Theta(n\lg{n})$.
 
 ## Pseudocode
 
@@ -18,7 +19,8 @@ taking $\Theta(\lg{n})$, i.e., $\Theta(n\lg{n})$.
 2-Sum(S, x)
   Merge-Sort(S)
   for i = 1 to S.length
-      if Binary-Search(S, x - S[i]) != NIL
+      j = Binary-Search(S, x - S[i])
+      if j != NIL and j != i
           return true
   return false
 ```
